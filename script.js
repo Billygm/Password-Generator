@@ -39,29 +39,29 @@ var generatePassword = function() {
 
   if (lcLetters) {
     characters = characters.concat(lowercase);
-    password += Math.floor(Math.random() * lowercase.length);
-    console.log(password, characters[password]);
+    password = password.concat(lowercase[Math.floor(Math.random() * lowercase.length)]);
+    console.log(password);
   }
 
   if (num) {
     characters = characters.concat(numbers)
-    password += Math.floor(Math.random() * numbers.length);
-    console.log(password, characters[password]);
+    password = password.concat(numbers[Math.floor(Math.random() * numbers.length)]);
+    console.log(password);
   }
   
   if (spChar) {
     characters = characters.concat(spCharacters)
-    password += Math.floor(Math.random() * spCharacters.length);
-    console.log(password, characters[password]);
+    password = password.concat(spCharacters[Math.floor(Math.random() * spCharacters.length)]);
+    console.log(password);
   }
   
-  for (var i=password.length; i <= pwLength; i++) {
-    password += Math.floor(Math.random() * characters.length);
-    console.log(password, characters[password]);
+  for (var i=password.length; i < pwLength; i++) {
+    password = password.concat(characters[Math.floor(Math.random() * characters.length)]);
+    console.log(password);
   }
   
-
   console.log(characters)
+  
 return password;
 }
 
