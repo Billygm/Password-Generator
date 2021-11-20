@@ -6,14 +6,13 @@ var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
 var spCharacters = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "|", "}", "]", "{", "[", "'", ";", ":", "/", "?", ".", ">", "<", ","];
-var none = [""]
 var characters = [];
+var password = [];
 
 
 var generatePassword = function() {
 
   // ask user for password criteria
-  var pass = [""];
   var pwLength =  8 // prompt("Choose your password length, enter a number between 8 - 128.");
 
   if (!pwLength) {
@@ -33,36 +32,37 @@ var generatePassword = function() {
   
   // Pulling characters for password
   if (ucLetters) {
-    pass += Math.floor(Math.random() * uppercase.length);
-    console.log(pass, uppercase[pass]);
     characters = characters.concat(uppercase);
+    password = password.concat(uppercase[Math.floor(Math.random() * uppercase.length)]);
+    console.log(password);
   }
 
   if (lcLetters) {
-    pass += Math.floor(Math.random() * lowercase.length);
-    console.log(pass, lowercase[pass]);
     characters = characters.concat(lowercase);
+    password += Math.floor(Math.random() * lowercase.length);
+    console.log(password, characters[password]);
   }
 
   if (num) {
-    pass += Math.floor(Math.random() * numbers.length);
-    console.log(pass, numbers[pass]);
     characters = characters.concat(numbers)
-  }
-
-  if (spChar) {
-    pass += Math.floor(Math.random() * spCharacters.length);
-    console.log(pass, spCharacters[pass]);
-    characters = characters.concat(spCharacters)
-  }
-  console.log(characters)
-
-  for (var i=pass.length; i <= pwLength; i++) {
-    pass += Math.floor(Math.random() * characters.length);
-    console.log(pass, characters[pass]);
+    password += Math.floor(Math.random() * numbers.length);
+    console.log(password, characters[password]);
   }
   
-return pass;
+  if (spChar) {
+    characters = characters.concat(spCharacters)
+    password += Math.floor(Math.random() * spCharacters.length);
+    console.log(password, characters[password]);
+  }
+  
+  for (var i=password.length; i <= pwLength; i++) {
+    password += Math.floor(Math.random() * characters.length);
+    console.log(password, characters[password]);
+  }
+  
+
+  console.log(characters)
+return password;
 }
 
 // Write password to the #password input
