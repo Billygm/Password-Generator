@@ -5,25 +5,25 @@ var generateBtn = document.querySelector("#generate");
 var uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 var lowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var numbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
-var spCharacters = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "|", "}", "]", "{", "[", "'", ";", ":", "/", "?", ".", ">", "<", ","];
+var spCharacters = ["`", "~", "!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "-", "_", "=", "+", "|", "}", "]", "{", "[", "'", ";", ":", "/", "?", ".", ">", "<", ",","\"", "\\"];
 var characters = [];
 var password = [];
 
 
 var generatePassword = function() {
-
+  password = [];
   // ask user for password criteria
-  var pwLength =  8 // prompt("Choose your password length, enter a number between 8 - 128.");
+  var pwLength = prompt("Choose your password length, enter a number between 8 - 128.");
 
   if (!pwLength) {
-    return pass;
+    return password;
   } else if (pwLength > 128 || pwLength < 8) {
     alert("Password length must be between 8 and 128 characters.");
   } else if (pwLength >= 8 && pwLength <= 128) {
-    var ucLetters = true; // confirm("Would you like to include uppercase letters?");
-    var lcLetters = true; // confirm("Would you like to include lowercase letters?");
-    var num = true; // confirm("Would you like to include numbers?");
-    var spChar = true; // confirm("Would you like to include special characters?");
+    var ucLetters = confirm("Would you like to include uppercase letters?");
+    var lcLetters = confirm("Would you like to include lowercase letters?");
+    var num = confirm("Would you like to include numbers?");
+    var spChar = confirm("Would you like to include special characters?");
   }
   
   if (ucLetters === false && lcLetters === false && num === false && spChar === false) {
@@ -61,8 +61,9 @@ var generatePassword = function() {
   }
   
   console.log(characters)
-  
-return password;
+  console.log(password.join(""))
+
+return password.join("");
 }
 
 // Write password to the #password input
