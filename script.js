@@ -30,7 +30,8 @@ var generatePassword = function() {
     alert("You must choose at least one character type.");
   }
   
-  // Pulling characters for password
+  // Pulling characters from their initial array into a new array to make all user selected types available in one array
+  // each 'if' statement ensures that if that character type is selected then at least 1 of that type is in the password
   if (ucLetters) {
     characters = characters.concat(uppercase);
     password = password.concat(uppercase[Math.floor(Math.random() * uppercase.length)]);
@@ -54,7 +55,8 @@ var generatePassword = function() {
     password = password.concat(spCharacters[Math.floor(Math.random() * spCharacters.length)]);
     console.log(password);
   }
-  
+
+  // after each user selected type has at least one character selected, this 'for' statement randomly selects the rest of the characters until the password legth matches the user selected length
   for (var i=password.length; i < pwLength; i++) {
     password = password.concat(characters[Math.floor(Math.random() * characters.length)]);
     console.log(password);
